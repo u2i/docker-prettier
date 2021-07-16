@@ -1,10 +1,10 @@
 FROM alpine
-ARG PRETTIER_VERSION=2.0.2
+ARG PRETTIER_VERSION=2.3.2
 
-RUN apk add --no-cache nodejs nodejs-npm && \
+RUN apk add --no-cache nodejs npm && \
     npm install -g prettier@${PRETTIER_VERSION} && \
     npm cache clean --force && \
-    apk del nodejs-npm
+    apk del npm
 
-ENTRYPOINT [ "/usr/bin/prettier" ]
+ENTRYPOINT [ "/usr/local/bin/prettier" ]
 CMD ["--help"]
